@@ -1,0 +1,67 @@
+{
+  "name": "@zettelyay/api-client",
+  "description": "Zettel: Public API types and access for client-side code",
+  "version": "0.0.0",
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    ".l": "npm run lint-staged",
+    ".u": "npm run zettel.upgrade",
+    "lint-staged": "cross-env NODE_ENV=production lint-staged --verbose",
+    "prepublishOnly": "npm run build",
+    "build": "npm run peers.validate && npm run clean && npm run tsc",
+    "clean": "rimraf dist",
+    "tsc": "tsc",
+    "peers.validate": "check-peer-dependencies --runOnlyOnRootDependencies",
+    "zettel.upgrade": "node -e \"const p = require('./package.json'); const k = Object.keys(p).filter(key => /dependencies$/i.test(key)); const d = k.flatMap(key => Object.keys(p[key]).filter(dep => /^@zettelyay\\//.test(dep)).map(dep => `${dep}@latest`)).join(' '); if(d) { require('child_process').execSync(`npm install ${d}`, { encoding: 'utf-8', stdio: 'inherit' }) }\"",
+    "updates.check": "ncu",
+    "updates.install": "rimraf package-lock.json && ncu --upgrade && npm install",
+    "preversion": "git-branch-is master",
+    "postversion": "git push --follow-tags",
+    "gource": "gource --seconds-per-day 0.35 --auto-skip-seconds 0.1 --file-idle-time 0 --max-file-lag 1",
+    "status": "sloc src/",
+    "test": "echo \"No test yet.\"",
+    "prepare": "husky install"
+  },
+  "peerDependencies": {
+    "@zettelyay/api-types": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/websocket": "^1.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "check-peer-dependencies": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "git-branch-is": "^4.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "npm-check-updates": "^16.10.9",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "sloc": "^0.2.1",
+    "typescript": "^5.0.4"
+  },
+  "license": "ISC",
+  "keywords": [
+    "zettel",
+    "client",
+    "api"
+  ],
+  "author": {
+    "name": "Zettel",
+    "email": "zettel@zettel.ooo"
+  },
+  "contributors": [
+    "Hessamoddin A Shokravi <ahs502@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zettelyay/api-client"
+  }
+}
