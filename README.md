@@ -57,7 +57,7 @@ $ npm run peers.validate
 Upgrade all Zettel's official dependencies:
 
 ```bash
-$ npm run zettel.upgrade
+$ npm run zettel.upgrade   # Alternatively:   $ npm run .u
 ```
 
 Check for all the updates available on the dependencies:

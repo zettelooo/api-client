@@ -16,7 +16,7 @@
     "clean": "rimraf dist",
     "tsc": "tsc",
     "peers.validate": "check-peer-dependencies --runOnlyOnRootDependencies",
-    "zettel.upgrade": "node -e \"const p = require('./package.json'); const k = Object.keys(p).filter(key => /dependencies$/i.test(key)); const d = k.flatMap(key => Object.keys(p[key]).filter(dep => /^@zettelyay\\//.test(dep)).map(dep => `${dep}@latest`)).join(' '); if(d) { require('child_process').execSync(`npm install ${d}`, { encoding: 'utf-8', stdio: 'inherit' }) }\"",
+    "zettel.upgrade": "node -e \"const p = require('./package.json'); const k = Object.keys(p).filter(key => /dependencies$/i.test(key)); const d = k.flatMap(key => Object.keys(p[key]).filter(dep => /^@zettelyay\\//.test(dep)).map(dep => `${dep}@latest`)).join(' '); if(d) { require('child_process').execSync(`npm install --force ${d}`, { encoding: 'utf-8', stdio: 'inherit' }) }\"",
     "updates.check": "ncu",
     "updates.install": "rimraf package-lock.json && ncu --upgrade && npm install",
     "preversion": "git-branch-is master",
@@ -27,7 +27,7 @@
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "@zettelyay/api-types": "^1.0.0"
+    "@zettelyay/api-types": "^1.0.1"
   },
   "devDependencies": {
     "@types/websocket": "^1.0.5",
