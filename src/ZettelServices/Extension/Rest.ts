@@ -43,7 +43,7 @@ export class Rest {
     ZettelTypes.Service.Extension.Rest.GetCards.Response
   >('get-cards')
 
-  setPageExtensionManagedData = this.requestFactory<
+  setPageExtensionData = this.requestFactory<
     ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Request,
     ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Response
   >('set-page-extension-data')
