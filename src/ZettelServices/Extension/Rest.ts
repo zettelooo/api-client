@@ -24,43 +24,43 @@ export class Rest {
   }
 
   getUsers = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.GetUsers.Request,
-    ZettelTypes.Services.Extension.REST.GetUsers.Response
+    ZettelTypes.Service.Extension.Rest.GetUsers.Request,
+    ZettelTypes.Service.Extension.Rest.GetUsers.Response
   >('get-users')
 
   getPages = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.GetPages.Request,
-    ZettelTypes.Services.Extension.REST.GetPages.Response
+    ZettelTypes.Service.Extension.Rest.GetPages.Request,
+    ZettelTypes.Service.Extension.Rest.GetPages.Response
   >('get-pages')
 
   getPageMembers = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.GetPageMembers.Request,
-    ZettelTypes.Services.Extension.REST.GetPageMembers.Response
+    ZettelTypes.Service.Extension.Rest.GetPageMembers.Request,
+    ZettelTypes.Service.Extension.Rest.GetPageMembers.Response
   >('get-page-members')
 
   getCards = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.GetCards.Request,
-    ZettelTypes.Services.Extension.REST.GetCards.Response
+    ZettelTypes.Service.Extension.Rest.GetCards.Request,
+    ZettelTypes.Service.Extension.Rest.GetCards.Response
   >('get-cards')
 
   setPageExtensionManagedData = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.SetPageExtensionManagedData.Request,
-    ZettelTypes.Services.Extension.REST.SetPageExtensionManagedData.Response
-  >('set-page-extension-managed-data')
+    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Request,
+    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Response
+  >('set-page-extension-data')
 
   addCard = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.AddCard.Request,
-    ZettelTypes.Services.Extension.REST.AddCard.Response
+    ZettelTypes.Service.Extension.Rest.AddCard.Request,
+    ZettelTypes.Service.Extension.Rest.AddCard.Response
   >('add-card')
 
   editCard = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.EditCard.Request,
-    ZettelTypes.Services.Extension.REST.EditCard.Response
+    ZettelTypes.Service.Extension.Rest.EditCard.Request,
+    ZettelTypes.Service.Extension.Rest.EditCard.Response
   >('edit-card')
 
   addBadge = this.requestFactory<
-    ZettelTypes.Services.Extension.REST.AddBadge.Request,
-    ZettelTypes.Services.Extension.REST.AddBadge.Response
+    ZettelTypes.Service.Extension.Rest.AddBadge.Request,
+    ZettelTypes.Service.Extension.Rest.AddBadge.Response
   >('add-badge')
 }
 

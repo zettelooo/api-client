@@ -53,7 +53,7 @@ export class GetUpdates {
       if (this.socket !== referencedSocket) return
       referencedSocket.send(
         GetUpdates.formatRequest({
-          type: ZettelTypes.Services.Extension.WS.GetUpdates.Request.Type.Start,
+          type: ZettelTypes.Service.Extension.Ws.GetUpdates.Request.Type.Start,
           extensionAccessKey: this.options.extensionAccessKey,
         })
       )
@@ -63,12 +63,12 @@ export class GetUpdates {
       if (this.socket !== referencedSocket) return
       const message = GetUpdates.parseResponse(event.data)
       switch (message.type) {
-        case ZettelTypes.Services.Extension.WS.GetUpdates.Response.Type.Started:
+        case ZettelTypes.Service.Extension.Ws.GetUpdates.Response.Type.Started:
           this.setStatus(GetUpdates.Status.Started)
           break
 
-        case ZettelTypes.Services.Extension.WS.GetUpdates.Response.Type.Mutation:
-          this.options.onMutation?.(message.entity)
+        case ZettelTypes.Service.Extension.Ws.GetUpdates.Response.Type.Mutation:
+          this.options.onMutation?.(message.mutation)
           break
       }
     }
@@ -97,13 +97,13 @@ export class GetUpdates {
     }
   }
 
-  static formatRequest<T extends ZettelTypes.Services.Extension.WS.GetUpdates.Request.Type>(
-    message: ZettelTypes.Services.Extension.WS.GetUpdates.Request<T>
+  static formatRequest<T extends ZettelTypes.Service.Extension.Ws.GetUpdates.Request.Type>(
+    message: ZettelTypes.Service.Extension.Ws.GetUpdates.Request<T>
   ): string {
     return JSON.stringify(message)
   }
 
-  static parseResponse(message: string): ZettelTypes.Services.Extension.WS.GetUpdates.Response {
+  static parseResponse(message: string): ZettelTypes.Service.Extension.Ws.GetUpdates.Response {
     return JSON.parse(message)
   }
 }
@@ -115,9 +115,7 @@ export namespace GetUpdates {
     readonly startInitially?: boolean
     readonly retryConnectionTimeoutMilliseconds?: number
     readonly onStatusChange?: (status: Status) => void
-    readonly onMutation?: (
-      entity: ZettelTypes.Services.Extension.WS.GetUpdates.Response<ZettelTypes.Services.Extension.WS.GetUpdates.Response.Type.Mutation>['entity']
-    ) => void
+    readonly onMutation?: (mutation: ZettelTypes.Service.Extension.Ws.GetUpdates.Response.Mutation) => void
   }
 
   export enum Status {
