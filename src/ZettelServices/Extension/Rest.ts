@@ -5,7 +5,9 @@ export class Rest {
   private baseUrl: string
 
   constructor(private readonly options: Rest.Options) {
-    this.baseUrl = options?.extensionRestApiBaseUrl || apiConfig.baseUrls.rest
+    this.baseUrl =
+      options.extensionRestApi?.baseUrl ||
+      apiConfig.baseUrlsByTargetEnvironment[options.extensionRestApi?.targetEnvironment ?? 'live'].rest
   }
 
   private requestFactory<Request, Response>(endPoint: string): (request: Request) => Promise<Response> {
@@ -66,7 +68,10 @@ export class Rest {
 
 export namespace Rest {
   export interface Options {
-    readonly extensionRestApiBaseUrl?: string
+    readonly extensionRestApi?: {
+      readonly baseUrl?: string
+      readonly targetEnvironment?: keyof typeof apiConfig.baseUrlsByTargetEnvironment
+    }
     readonly extensionAccessKey: string
   }
 }

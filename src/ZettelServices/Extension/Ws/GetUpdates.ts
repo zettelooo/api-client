@@ -44,7 +44,9 @@ export class GetUpdates {
     if (this.status === GetUpdates.Status.Starting || this.status === GetUpdates.Status.Started) return
 
     this.setStatus(GetUpdates.Status.Starting)
-    const baseUrl = this.options.extensionWsApiBaseUrl || apiConfig.baseUrls.ws
+    const baseUrl =
+      this.options.extensionWsApi?.baseUrl ||
+      apiConfig.baseUrlsByTargetEnvironment[this.options.extensionWsApi?.targetEnvironment ?? 'live'].ws
     this.socket = new WebSocket(`${baseUrl}/ws/extension/get-updates`)
     this.socket.binaryType = 'arraybuffer'
     const referencedSocket = this.socket!
@@ -110,7 +112,10 @@ export class GetUpdates {
 
 export namespace GetUpdates {
   export interface Options {
-    readonly extensionWsApiBaseUrl?: string
+    readonly extensionWsApi?: {
+      readonly baseUrl?: string
+      readonly targetEnvironment?: keyof typeof apiConfig.baseUrlsByTargetEnvironment
+    }
     readonly extensionAccessKey: string
     readonly startInitially?: boolean
     readonly retryConnectionTimeoutMilliseconds?: number
