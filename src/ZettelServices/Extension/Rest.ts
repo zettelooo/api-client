@@ -1,7 +1,7 @@
 import { ZettelTypes } from '@zettelyay/api-types'
 import { apiConfig } from '../../apiConfig'
 
-export class Rest {
+export class Rest<PD = any, CD = any> {
   private baseUrl: string
 
   constructor(private readonly options: Rest.Options) {
@@ -32,7 +32,7 @@ export class Rest {
 
   getPages = this.requestFactory<
     ZettelTypes.Service.Extension.Rest.GetPages.Request,
-    ZettelTypes.Service.Extension.Rest.GetPages.Response
+    ZettelTypes.Service.Extension.Rest.GetPages.Response<PD>
   >('get-pages')
 
   getPageMembers = this.requestFactory<
@@ -42,21 +42,26 @@ export class Rest {
 
   getCards = this.requestFactory<
     ZettelTypes.Service.Extension.Rest.GetCards.Request,
-    ZettelTypes.Service.Extension.Rest.GetCards.Response
+    ZettelTypes.Service.Extension.Rest.GetCards.Response<CD>
   >('get-cards')
 
   setPageExtensionData = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Request,
+    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Request<PD>,
     ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Response
   >('set-page-extension-data')
 
+  setCardExtensionData = this.requestFactory<
+    ZettelTypes.Service.Extension.Rest.SetCardExtensionData.Request<CD>,
+    ZettelTypes.Service.Extension.Rest.SetCardExtensionData.Response
+  >('set-card-extension-data')
+
   addCard = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.AddCard.Request,
+    ZettelTypes.Service.Extension.Rest.AddCard.Request<CD>,
     ZettelTypes.Service.Extension.Rest.AddCard.Response
   >('add-card')
 
   editCard = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.EditCard.Request,
+    ZettelTypes.Service.Extension.Rest.EditCard.Request<CD>,
     ZettelTypes.Service.Extension.Rest.EditCard.Response
   >('edit-card')
 
