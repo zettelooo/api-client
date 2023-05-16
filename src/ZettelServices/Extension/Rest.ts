@@ -55,6 +55,16 @@ export class Rest<PD = any, CD = any> {
     ZettelTypes.Service.Extension.Rest.SetCardExtensionData.Response
   >('set-card-extension-data')
 
+  addPage = this.requestFactory<
+    ZettelTypes.Service.Extension.Rest.AddPage.Request<CD>,
+    ZettelTypes.Service.Extension.Rest.AddPage.Response
+  >('add-page')
+
+  editPage = this.requestFactory<
+    ZettelTypes.Service.Extension.Rest.EditPage.Request<CD>,
+    ZettelTypes.Service.Extension.Rest.EditPage.Response
+  >('edit-page')
+
   addCard = this.requestFactory<
     ZettelTypes.Service.Extension.Rest.AddCard.Request<CD>,
     ZettelTypes.Service.Extension.Rest.AddCard.Response
