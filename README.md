@@ -14,7 +14,7 @@ Clone the repository locally:
 
 
 ```bash
-$ git clone https://github.com/zettelooo/api-client.git
+$ git clone git@github.com:zettelooo/api-client.git
 ```
 
 Install the dependencies:
