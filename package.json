@@ -1,7 +1,7 @@
 {
   "name": "@zettelooo/api-client",
   "description": "Zettel: Public API types and access for client-side code",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "files": [
     "dist/**"
   ],
