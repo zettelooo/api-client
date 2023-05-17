@@ -1,4 +1,4 @@
-import { ZettelTypes } from '@zettelyay/api-types'
+import { ZettelTypes } from '@zettelooo/api-types'
 import { apiConfig } from '../../apiConfig'
 
 export class Rest<PD = any, CD = any> {

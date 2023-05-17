@@ -5,7 +5,7 @@ API helper tools for client-side.
 ## Installation
 
 ```bash
-$ npm install @zettelyay/api-client
+$ npm install @zettelooo/api-client
 ```
 
 ## Development
@@ -14,7 +14,7 @@ Clone the repository locally:
 
 
 ```bash
-$ git clone https://github.com/zettelyay/api-client.git
+$ git clone https://github.com/zettelooo/api-client.git
 ```
 
 Install the dependencies:
@@ -32,7 +32,7 @@ You need to have **Prettier** and **ESLint** extensions to be installed on your 
 Lint check before commit:
 
 ```bash
-$ npm run lint-staged   # Alternatively:   $ npm run .l
+$ npm run bt -- lint-staged   # Alternatively:   $ npm run l
 ```
 
 ## Publication
@@ -48,43 +48,10 @@ $ npm version patch   # / minor / major / any other valid semantic version
 
 ## Misc
 
-Validate all peer dependencies:
+You can use the following NPM script to access [Zettel Build Tools](https://github.com/zettelooo/build-tools#usage):
 
 ```bash
-$ npm run peers.validate
-```
-
-Upgrade all Zettel's official dependencies:
-
-```bash
-$ npm run zettel.upgrade   # Alternatively:   $ npm run .u
-```
-
-Check for all the updates available on the dependencies:
-
-```bash
-$ npm run updates.check
-```
-
-Upgrade all the dependencies to their very latest versions:
-
-```bash
-$ npm run updates.install
-```
-
-View GIT history visualized:
-
-```bash
-$ npm run gource
-```
-
-> You probably need to install `gource` locally first.<br/>
-See [this link](https://gource.io/).
-
-Summarize the size of the code base in lines of code:
-
-```bash
-$ npm run status
+$ npm run bt -- <command>   # e.g.: npm run bt - update
 ```
 
 ------------------
