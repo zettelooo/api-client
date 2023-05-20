@@ -1,8 +1,8 @@
 export const apiConfig = {
   baseUrlsByTargetEnvironment: {
     local: {
-      rest: 'http://localhost:3001',
-      ws: 'ws://localhost:3001',
+      rest: 'http://localhost:5001',
+      ws: 'ws://localhost:5001',
     },
     stage: {
       rest: 'https://api-stage.zettel.ooo',

@@ -1,4 +1,4 @@
-import { ZettelTypes } from '@zettelooo/api-types'
+import { ZettelTypes, version } from '@zettelooo/api-types'
 import { apiConfig } from '../../apiConfig'
 
 export class Rest<PD = any, CD = any> {
@@ -12,7 +12,7 @@ export class Rest<PD = any, CD = any> {
 
   private requestFactory<Request, Response>(endPoint: string): (request: Request) => Promise<Response> {
     return async request => {
-      const response = await fetch(`${this.baseUrl}/rest/extension/${endPoint}`, {
+      const response = await fetch(`${this.baseUrl}/${version}/rest/extension/${endPoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

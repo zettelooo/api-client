@@ -1,4 +1,4 @@
-import { ZettelTypes } from '@zettelooo/api-types'
+import { ZettelTypes, version } from '@zettelooo/api-types'
 import { apiConfig } from '../../../apiConfig'
 
 export class GetUpdates<PD = any, CD = any> {
@@ -47,7 +47,7 @@ export class GetUpdates<PD = any, CD = any> {
     const baseUrl =
       this.options.extensionWsApi?.baseUrl ||
       apiConfig.baseUrlsByTargetEnvironment[this.options.extensionWsApi?.targetEnvironment ?? 'live'].ws
-    this.socket = new WebSocket(`${baseUrl}/ws/extension/get-updates`)
+    this.socket = new WebSocket(`${baseUrl}/${version}/ws/extension/get-updates`)
     this.socket.binaryType = 'arraybuffer'
     const referencedSocket = this.socket!
 
