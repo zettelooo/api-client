@@ -26,63 +26,63 @@ export class Rest<PD = any, CD = any, BD = any> {
   }
 
   getUsers = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.GetUsers.Request,
-    ZettelTypes.Service.Extension.Rest.GetUsers.Response
+    ZettelTypes.Extension.Service.Rest.GetUsers.Request,
+    ZettelTypes.Extension.Service.Rest.GetUsers.Response
   >('get-users')
 
   getPages = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.GetPages.Request,
-    ZettelTypes.Service.Extension.Rest.GetPages.Response<PD>
+    ZettelTypes.Extension.Service.Rest.GetPages.Request,
+    ZettelTypes.Extension.Service.Rest.GetPages.Response<PD>
   >('get-pages')
 
   getPageMembers = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.GetPageMembers.Request,
-    ZettelTypes.Service.Extension.Rest.GetPageMembers.Response
+    ZettelTypes.Extension.Service.Rest.GetPageMembers.Request,
+    ZettelTypes.Extension.Service.Rest.GetPageMembers.Response
   >('get-page-members')
 
   getCards = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.GetCards.Request,
-    ZettelTypes.Service.Extension.Rest.GetCards.Response<CD, BD>
+    ZettelTypes.Extension.Service.Rest.GetCards.Request,
+    ZettelTypes.Extension.Service.Rest.GetCards.Response<CD, BD>
   >('get-cards')
 
   setPageExtensionData = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Request<PD>,
-    ZettelTypes.Service.Extension.Rest.SetPageExtensionData.Response
+    ZettelTypes.Extension.Service.Rest.SetPageExtensionData.Request<PD>,
+    ZettelTypes.Extension.Service.Rest.SetPageExtensionData.Response
   >('set-page-extension-data')
 
   setCardExtensionData = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.SetCardExtensionData.Request<CD>,
-    ZettelTypes.Service.Extension.Rest.SetCardExtensionData.Response
+    ZettelTypes.Extension.Service.Rest.SetCardExtensionData.Request<CD>,
+    ZettelTypes.Extension.Service.Rest.SetCardExtensionData.Response
   >('set-card-extension-data')
 
   setCardBlockExtensionData = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.SetCardBlockExtensionData.Request<CD>,
-    ZettelTypes.Service.Extension.Rest.SetCardBlockExtensionData.Response
+    ZettelTypes.Extension.Service.Rest.SetCardBlockExtensionData.Request<CD>,
+    ZettelTypes.Extension.Service.Rest.SetCardBlockExtensionData.Response
   >('set-card-block-extension-data')
 
   addPage = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.AddPage.Request<PD>,
-    ZettelTypes.Service.Extension.Rest.AddPage.Response
+    ZettelTypes.Extension.Service.Rest.AddPage.Request<PD>,
+    ZettelTypes.Extension.Service.Rest.AddPage.Response
   >('add-page')
 
   editPage = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.EditPage.Request<PD>,
-    ZettelTypes.Service.Extension.Rest.EditPage.Response
+    ZettelTypes.Extension.Service.Rest.EditPage.Request<PD>,
+    ZettelTypes.Extension.Service.Rest.EditPage.Response
   >('edit-page')
 
   addCard = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.AddCard.Request<CD, BD>,
-    ZettelTypes.Service.Extension.Rest.AddCard.Response
+    ZettelTypes.Extension.Service.Rest.AddCard.Request<CD, BD>,
+    ZettelTypes.Extension.Service.Rest.AddCard.Response
   >('add-card')
 
   editCard = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.EditCard.Request<CD, BD>,
-    ZettelTypes.Service.Extension.Rest.EditCard.Response
+    ZettelTypes.Extension.Service.Rest.EditCard.Request<CD, BD>,
+    ZettelTypes.Extension.Service.Rest.EditCard.Response
   >('edit-card')
 
   addBadge = this.requestFactory<
-    ZettelTypes.Service.Extension.Rest.AddBadge.Request,
-    ZettelTypes.Service.Extension.Rest.AddBadge.Response
+    ZettelTypes.Extension.Service.Rest.AddBadge.Request,
+    ZettelTypes.Extension.Service.Rest.AddBadge.Response
   >('add-badge')
 }
 
