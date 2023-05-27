@@ -57,6 +57,7 @@ module.exports = {
     'object-shorthand': ['error', 'always', { avoidQuotes: false }],
     'prefer-const': productionErrorOtherwiseWarn,
     'prettier/prettier': productionError,
+    'spaced-comment': [productionErrorOtherwiseWarn, 'always'], // We use un-spaced comments for lines which we don't want to commit
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
