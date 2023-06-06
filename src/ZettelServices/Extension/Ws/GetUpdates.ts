@@ -4,6 +4,7 @@ import { apiConfig } from '../../../apiConfig'
 export class GetUpdates<PD = any, CD = any, BD = any> {
   private socket?: WebSocket
   private status!: GetUpdates.Status
+  private registrationKey?: string
 
   constructor(private readonly options: GetUpdates.Options<PD, CD, BD>) {
     this.setStatus(GetUpdates.Status.ClosedInitially)
@@ -40,6 +41,10 @@ export class GetUpdates<PD = any, CD = any, BD = any> {
     return this.status
   }
 
+  getRegistrationKey(): string | undefined {
+    return this.registrationKey
+  }
+
   start(): void {
     if (this.status === GetUpdates.Status.Starting || this.status === GetUpdates.Status.Started) return
 
@@ -66,6 +71,7 @@ export class GetUpdates<PD = any, CD = any, BD = any> {
       const message = GetUpdates.parseResponse(event.data)
       switch (message.type) {
         case ZettelTypes.Extension.Service.Ws.GetUpdates.Response.Type.Started:
+          this.registrationKey = message.registrationKey
           this.setStatus(GetUpdates.Status.Started)
           break
 
@@ -95,6 +101,7 @@ export class GetUpdates<PD = any, CD = any, BD = any> {
       if (socket?.readyState === WebSocket.CONNECTING || socket?.readyState === WebSocket.OPEN) {
         socket?.close()
       }
+      delete this.registrationKey
       this.setStatus(status)
     }
   }
