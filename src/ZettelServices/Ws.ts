@@ -1,12 +1,12 @@
 import { ZettelTypes, version } from '@zettelooo/api-types'
-import { apiConfig } from '../../../apiConfig'
+import { apiConfig } from '../apiConfig'
 
-export class GetUpdates<PD = any, CD = any> {
+export class GetUpdates<D extends ZettelTypes.Data = ZettelTypes.Data.Default> {
   private socket?: WebSocket
   private status!: GetUpdates.Status
   private registrationKey?: string
 
-  constructor(private readonly options: GetUpdates.Options<PD, CD>) {
+  constructor(private readonly options: GetUpdates.Options<D>) {
     this.setStatus(GetUpdates.Status.ClosedInitially)
   }
 
@@ -60,7 +60,7 @@ export class GetUpdates<PD = any, CD = any> {
       if (this.socket !== referencedSocket) return
       referencedSocket.send(
         GetUpdates.formatRequest({
-          type: ZettelTypes.Extension.Service.Ws.GetUpdates.Request.Type.Start,
+          type: ZettelTypes.Service.Ws.GetUpdates.Request.Type.Start,
           extensionAccessKey: this.options.extensionAccessKey,
         })
       )
@@ -70,12 +70,12 @@ export class GetUpdates<PD = any, CD = any> {
       if (this.socket !== referencedSocket) return
       const message = GetUpdates.parseResponse(event.data)
       switch (message.type) {
-        case ZettelTypes.Extension.Service.Ws.GetUpdates.Response.Type.Started:
+        case ZettelTypes.Service.Ws.GetUpdates.Response.Type.Started:
           this.registrationKey = message.registrationKey
           this.setStatus(GetUpdates.Status.Started)
           break
 
-        case ZettelTypes.Extension.Service.Ws.GetUpdates.Response.Type.Mutation:
+        case ZettelTypes.Service.Ws.GetUpdates.Response.Type.Mutation:
           this.options.onMutation?.(message.mutation)
           break
       }
@@ -106,19 +106,19 @@ export class GetUpdates<PD = any, CD = any> {
     }
   }
 
-  static formatRequest<T extends ZettelTypes.Extension.Service.Ws.GetUpdates.Request.Type>(
-    message: ZettelTypes.Extension.Service.Ws.GetUpdates.Request<T>
+  static formatRequest<T extends ZettelTypes.Service.Ws.GetUpdates.Request.Type>(
+    message: ZettelTypes.Service.Ws.GetUpdates.Request<T>
   ): string {
     return JSON.stringify(message)
   }
 
-  static parseResponse(message: string): ZettelTypes.Extension.Service.Ws.GetUpdates.Response {
+  static parseResponse(message: string): ZettelTypes.Service.Ws.GetUpdates.Response {
     return JSON.parse(message)
   }
 }
 
 export namespace GetUpdates {
-  export interface Options<PD = any, CD = any> {
+  export interface Options<D extends ZettelTypes.Data = ZettelTypes.Data.Default> {
     readonly extensionWsApi?: {
       readonly baseUrl?: string
       readonly targetEnvironment?: keyof typeof apiConfig.baseUrlsByTargetEnvironment
@@ -127,7 +127,7 @@ export namespace GetUpdates {
     readonly startInitially?: boolean
     readonly retryConnectionTimeoutMilliseconds?: number
     readonly onStatusChange?: (status: Status) => void
-    readonly onMutation?: (mutation: ZettelTypes.Extension.Service.Ws.GetUpdates.Response.Mutation<PD, CD>) => void
+    readonly onMutation?: (mutation: ZettelTypes.Service.Ws.GetUpdates.Response.Mutation<D>) => void
   }
 
   export enum Status {
