@@ -52,7 +52,7 @@ export class GetUpdates<D extends ZettelTypes.Data = ZettelTypes.Data.Default> {
     const baseUrl =
       this.options.extensionWsApi?.baseUrl ||
       apiConfig.baseUrlsByTargetEnvironment[this.options.extensionWsApi?.targetEnvironment ?? 'live'].ws
-    this.socket = new WebSocket(`${baseUrl}/${version}/ws/extension/get-updates`)
+    this.socket = new WebSocket(`${baseUrl}/${version}/ws/get-updates`)
     this.socket.binaryType = 'arraybuffer'
     const referencedSocket = this.socket!
 

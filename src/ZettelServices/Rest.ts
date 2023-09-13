@@ -12,7 +12,7 @@ export class Rest<D extends ZettelTypes.Data = ZettelTypes.Data.Default> {
 
   private requestFactory<Request, Response>(endPoint: string): (request: Request) => Promise<Response> {
     return async request => {
-      const response = await fetch(`${this.baseUrl}/${version}/rest/extension/${endPoint}`, {
+      const response = await fetch(`${this.baseUrl}/${version}/rest/${endPoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
